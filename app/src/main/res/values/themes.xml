@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BlazeBrowser" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blaze_orange</item>
+        <item name="colorPrimaryVariant">@color/blaze_orange</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorSecondary">@color/blaze_orange</item>
+        <item name="colorSecondaryVariant">@color/blaze_orange</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+        <item name="android:colorBackground">@color/blaze_dark_bg</item>
+        <item name="colorSurface">@color/blaze_toolbar_bg</item>
+        <item name="colorOnSurface">@android:color/white</item>
+        <item name="android:statusBarColor">@color/blaze_dark_bg</item>
+        <item name="android:navigationBarColor">@color/blaze_dark_bg</item>
+    </style>
+
+    <style name="Theme.BlazeBrowser.NoActionBar" parent="Theme.BlazeBrowser">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>
