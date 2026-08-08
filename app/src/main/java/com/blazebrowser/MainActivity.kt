@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity() {
         settings.loadWithOverviewMode = true
         settings.builtInZoomControls = true
         settings.displayZoomControls = false
-        settings.supportZoom = true
         settings.allowFileAccess = false
         settings.allowContentAccess = false
         settings.mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
