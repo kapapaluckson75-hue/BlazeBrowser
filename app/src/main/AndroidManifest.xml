@@ -25,5 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TempMailActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
+            android:parentActivityName=".MainActivity" />
     </application>
 </manifest>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Network Masking"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <CheckBox
+            android:id="@+id/checkMasking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enable Network Masking"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp" />
+
+        <CheckBox
+            android:id="@+id/checkSpoofUA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Spoof User Agent"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp" />
+
+        <CheckBox
+            android:id="@+id/checkBlockTrackers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Block Trackers"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp" />
+
+        <CheckBox
+            android:id="@+id/checkBlockAds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Block Ads"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp" />
+
+        <CheckBox
+            android:id="@+id/checkDisableJS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Disable JavaScript"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp" />
+
+        <CheckBox
+            android:id="@+id/checkDisableImages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Disable Images"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="12dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#44FFFFFF"
+            android:layout_marginBottom="12dp" />
+
+        <CheckBox
+            android:id="@+id/checkProxy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enable Proxy"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/editProxyHost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Proxy Host"
+            android:background="#222222"
+            android:textColorHint="#88FFFFFF"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/editProxyPort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Proxy Port"
+            android:inputType="number"
+            android:background="#222222"
+            android:textColorHint="#88FFFFFF"
+            android:textColor="@android:color/white"
+            android:padding="12dp" />
+
+    </LinearLayout>
+</ScrollView>

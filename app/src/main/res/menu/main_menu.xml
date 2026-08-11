@@ -3,36 +3,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menuMode"
+        android:title="@string/mode_normal"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/menuSearchEngine"
         android:title="@string/search_engine"
         app:showAsAction="never">
         <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/searchGoogle"
-                    android:title="@string/search_google"
-                    android:checked="true" />
-                <item
-                    android:id="@+id/searchDuckDuckGo"
-                    android:title="@string/search_duckduckgo" />
-                <item
-                    android:id="@+id/searchBing"
-                    android:title="@string/search_bing" />
-                <item
-                    android:id="@+id/searchBrave"
-                    android:title="@string/search_brave" />
-                <item
-                    android:id="@+id/searchStartpage"
-                    android:title="@string/search_startpage" />
-                <item
-                    android:id="@+id/searchKagi"
-                    android:title="@string/search_kagi" />
-            </group>
+            <item
+                android:id="@+id/menuSelectEngine"
+                android:title="@string/select_engine" />
+            <item
+                android:id="@+id/menuAddSearchEngine"
+                android:title="@string/add_engine" />
         </menu>
     </item>
 
     <item
-        android:id="@+id/menuSettings"
-        android:title="@string/settings"
+        android:id="@+id/menuBookmarks"
+        android:title="@string/bookmarks"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menuAddBookmark"
+        android:title="@string/add_bookmark"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menuHistory"
+        android:title="@string/history"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menuFind"
+        android:title="@string/find_in_page"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menuTempMail"
+        android:title="@string/temp_mail"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menuNetworkSettings"
+        android:title="@string/network_settings"
+        app:showAsAction="never" />
+
 </menu>
