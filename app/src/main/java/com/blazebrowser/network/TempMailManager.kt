@@ -70,7 +70,7 @@ class TempMailManager(private val context: Context) {
             
             // Create account
             val createResult = createAccount(email, password)
-            if (createResult.isFailure) return createResult
+            if (createResult.isFailure) return Result.failure(createResult.exceptionOrNull() ?: Exception("Account creation failed"))
             
             val accountId = createResult.getOrThrow()
             
