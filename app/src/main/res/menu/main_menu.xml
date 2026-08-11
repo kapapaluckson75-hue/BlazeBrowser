@@ -52,6 +52,11 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/menuBlazeLink"
+        android:title="Blaze Link"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/menuNetworkSettings"
         android:title="@string/network_settings"
         app:showAsAction="never" />

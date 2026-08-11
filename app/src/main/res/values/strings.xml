@@ -20,4 +20,5 @@
     <string name="temp_mail">Temp Mail</string>
     <string name="network_settings">Network Settings</string>
     <string name="blaze_ai">BlazeAI</string>
+    <string name="blaze_link">Blaze Link</string>
 </resources>

@@ -16,6 +16,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
@@ -35,6 +36,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.blazebrowser.ai.AiConfig
+import com.blazebrowser.bridge.BlazeLinkManager
 import com.blazebrowser.data.Bookmark
 import com.blazebrowser.data.BookmarkManager
 import com.blazebrowser.data.HistoryEntry
@@ -70,6 +72,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var networkMaskManager: NetworkMaskManager
     private lateinit var tempMailManager: TempMailManager
     private lateinit var aiConfig: AiConfig
+    private lateinit var blazeLinkManager: BlazeLinkManager
 
     private val tabs = mutableListOf<TabData>()
     private var currentTabId = -1
@@ -102,6 +105,7 @@ class MainActivity : AppCompatActivity() {
         networkMaskManager = NetworkMaskManager(this)
         tempMailManager = TempMailManager(this)
         aiConfig = AiConfig(this)
+        blazeLinkManager = BlazeLinkManager(this)
 
         initViews()
         setupListeners()
@@ -265,6 +269,9 @@ class MainActivity : AppCompatActivity() {
                     updateNavButtons()
                     progressBar.visibility = View.GONE
                 }
+
+                // Inject BlazeLink if enabled for this domain
+                injectBlazeLink(view, it)
             }
         }
 
@@ -386,11 +393,35 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
+            R.id.menuBlazeLink -> {
+                startActivity(Intent(this, BlazeLinkActivity::class.java))
+                true
+            }
             R.id.menuAddSearchEngine -> {
                 showAddSearchEngineDialog()
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun injectBlazeLink(view: WebView?, url: String) {
+        try {
+            val domain = java.net.URI(url).host ?: return
+            val cleanDomain = domain.removePrefix("www.")
+
+            if (blazeLinkManager.isEnabled(cleanDomain) && aiConfig.isConfigured()) {
+                val script = blazeLinkManager.getInjectionScript(aiConfig.getEffectiveModel())
+                view?.evaluateJavascript(script, null)
+            }
+
+            // Also check if we launched with blaze_link intent extra
+            if (intent.getBooleanExtra("blaze_link", false) && aiConfig.isConfigured()) {
+                val script = blazeLinkManager.getInjectionScript(aiConfig.getEffectiveModel())
+                view?.evaluateJavascript(script, null)
+            }
+        } catch (e: Exception) {
+            // Ignore injection errors
         }
     }
 

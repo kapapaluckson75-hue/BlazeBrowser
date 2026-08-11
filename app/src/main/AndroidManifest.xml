@@ -45,5 +45,9 @@
             android:name=".AiConfigActivity"
             android:theme="@style/Theme.BlazeBrowser.NoActionBar"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".BlazeLinkActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
+            android:parentActivityName=".MainActivity" />
     </application>
 </manifest>
