@@ -33,7 +33,9 @@ import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.blazebrowser.data.Bookmark
 import com.blazebrowser.data.BookmarkManager
+import com.blazebrowser.data.HistoryEntry
 import com.blazebrowser.data.HistoryManager
 import com.blazebrowser.data.ModeManager
 import com.blazebrowser.data.SearchEngineManager
@@ -578,9 +580,9 @@ class MainActivity : AppCompatActivity() {
     // ==================== ADAPTERS ====================
 
     inner class BookmarkAdapter(
-        private val items: List<BookmarkManager.Bookmark>,
-        private val onClick: (BookmarkManager.Bookmark) -> Unit,
-        private val onLongClick: (BookmarkManager.Bookmark) -> Unit
+        private val items: List<Bookmark>,
+        private val onClick: (Bookmark) -> Unit,
+        private val onLongClick: (Bookmark) -> Unit
     ) : RecyclerView.Adapter<BookmarkAdapter.VH>() {
         inner class VH(view: View) : RecyclerView.ViewHolder(view) {
             val title: TextView = view.findViewById(android.R.id.text1)
@@ -605,9 +607,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     inner class HistoryAdapter(
-        private val items: List<HistoryManager.HistoryEntry>,
-        private val onClick: (HistoryManager.HistoryEntry) -> Unit,
-        private val onLongClick: (HistoryManager.HistoryEntry) -> Unit
+        private val items: List<HistoryEntry>,
+        private val onClick: (HistoryEntry) -> Unit,
+        private val onLongClick: (HistoryEntry) -> Unit
     ) : RecyclerView.Adapter<HistoryAdapter.VH>() {
         inner class VH(view: View) : RecyclerView.ViewHolder(view) {
             val title: TextView = view.findViewById(android.R.id.text1)
