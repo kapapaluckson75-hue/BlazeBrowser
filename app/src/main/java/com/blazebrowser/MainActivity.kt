@@ -121,6 +121,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
+        urlBar.setOnClickListener {
+            urlBar.selectAll()
+        }
+
         urlBar.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_GO ||
                 actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE ||
