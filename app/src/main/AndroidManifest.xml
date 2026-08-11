@@ -29,5 +29,21 @@
             android:name=".TempMailActivity"
             android:theme="@style/Theme.BlazeBrowser.NoActionBar"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".InboxActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
+            android:parentActivityName=".TempMailActivity" />
+        <activity
+            android:name=".MessageDetailActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
+            android:parentActivityName=".InboxActivity" />
+        <activity
+            android:name=".AiAssistantActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AiConfigActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
+            android:parentActivityName=".MainActivity" />
     </application>
 </manifest>

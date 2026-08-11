@@ -47,6 +47,11 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/menuBlazeAI"
+        android:title="BlazeAI"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/menuNetworkSettings"
         android:title="@string/network_settings"
         app:showAsAction="never" />

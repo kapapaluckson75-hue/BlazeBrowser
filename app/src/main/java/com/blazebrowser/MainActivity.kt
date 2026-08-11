@@ -34,6 +34,7 @@ import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.blazebrowser.ai.AiConfig
 import com.blazebrowser.data.Bookmark
 import com.blazebrowser.data.BookmarkManager
 import com.blazebrowser.data.HistoryEntry
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var searchEngineManager: SearchEngineManager
     private lateinit var networkMaskManager: NetworkMaskManager
     private lateinit var tempMailManager: TempMailManager
+    private lateinit var aiConfig: AiConfig
 
     private val tabs = mutableListOf<TabData>()
     private var currentTabId = -1
@@ -99,6 +101,7 @@ class MainActivity : AppCompatActivity() {
         searchEngineManager = SearchEngineManager(this)
         networkMaskManager = NetworkMaskManager(this)
         tempMailManager = TempMailManager(this)
+        aiConfig = AiConfig(this)
 
         initViews()
         setupListeners()
@@ -373,6 +376,14 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.menuNetworkSettings -> {
                 showNetworkSettingsDialog()
+                true
+            }
+            R.id.menuBlazeAI -> {
+                if (!aiConfig.isConfigured()) {
+                    startActivity(Intent(this, AiConfigActivity::class.java))
+                } else {
+                    startActivity(Intent(this, AiAssistantActivity::class.java))
+                }
                 true
             }
             R.id.menuAddSearchEngine -> {
