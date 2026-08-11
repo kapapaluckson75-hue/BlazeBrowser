@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menuSearchEngine"
+        android:title="@string/search_engine"
+        app:showAsAction="never">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/searchGoogle"
+                    android:title="@string/search_google"
+                    android:checked="true" />
+                <item
+                    android:id="@+id/searchDuckDuckGo"
+                    android:title="@string/search_duckduckgo" />
+                <item
+                    android:id="@+id/searchBing"
+                    android:title="@string/search_bing" />
+                <item
+                    android:id="@+id/searchBrave"
+                    android:title="@string/search_brave" />
+                <item
+                    android:id="@+id/searchStartpage"
+                    android:title="@string/search_startpage" />
+                <item
+                    android:id="@+id/searchKagi"
+                    android:title="@string/search_kagi" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/menuSettings"
+        android:title="@string/settings"
+        app:showAsAction="never" />
+</menu>

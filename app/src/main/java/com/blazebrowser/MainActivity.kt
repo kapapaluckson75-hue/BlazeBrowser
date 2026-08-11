@@ -1,8 +1,11 @@
 package com.blazebrowser
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
@@ -28,11 +31,22 @@ class MainActivity : AppCompatActivity() {
 
     private val homeUrl = "https://www.google.com"
 
+    private var searchEngine: String = "google"
+    private lateinit var prefs: SharedPreferences
+
+    companion object {
+        private const val PREFS_NAME = "BlazeBrowserPrefs"
+        private const val KEY_SEARCH_ENGINE = "search_engine"
+    }
+
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.activity_main)
+
+        prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        searchEngine = prefs.getString(KEY_SEARCH_ENGINE, "google") ?: "google"
 
         initViews()
         setupWebView()
@@ -130,11 +144,85 @@ class MainActivity : AppCompatActivity() {
             if (url.contains(".") && !url.contains(" ")) {
                 url = "https://$url"
             } else {
-                url = "https://www.google.com/search?q=${url.replace(" ", "+")}"
+                url = buildSearchUrl(url)
             }
         }
         webView.loadUrl(url)
         progressBar.visibility = View.VISIBLE
+    }
+
+    private fun buildSearchUrl(query: String): String {
+        val encodedQuery = query.replace(" ", "+")
+        return when (searchEngine) {
+            "duckduckgo" -> "https://duckduckgo.com/?q=$encodedQuery"
+            "bing" -> "https://www.bing.com/search?q=$encodedQuery"
+            "brave" -> "https://search.brave.com/search?q=$encodedQuery"
+            "startpage" -> "https://www.startpage.com/sp/search?q=$encodedQuery"
+            "kagi" -> "https://kagi.com/search?q=$encodedQuery"
+            else -> "https://www.google.com/search?q=$encodedQuery"
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        // Set the correct search engine as checked
+        val searchEngineItem = menu?.findItem(R.id.menuSearchEngine)
+        val subMenu = searchEngineItem?.subMenu
+        val checkedId = when (searchEngine) {
+            "duckduckgo" -> R.id.searchDuckDuckGo
+            "bing" -> R.id.searchBing
+            "brave" -> R.id.searchBrave
+            "startpage" -> R.id.searchStartpage
+            "kagi" -> R.id.searchKagi
+            else -> R.id.searchGoogle
+        }
+        subMenu?.findItem(checkedId)?.isChecked = true
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.searchGoogle -> {
+                setSearchEngine("google")
+                item.isChecked = true
+                true
+            }
+            R.id.searchDuckDuckGo -> {
+                setSearchEngine("duckduckgo")
+                item.isChecked = true
+                true
+            }
+            R.id.searchBing -> {
+                setSearchEngine("bing")
+                item.isChecked = true
+                true
+            }
+            R.id.searchBrave -> {
+                setSearchEngine("brave")
+                item.isChecked = true
+                true
+            }
+            R.id.searchStartpage -> {
+                setSearchEngine("startpage")
+                item.isChecked = true
+                true
+            }
+            R.id.searchKagi -> {
+                setSearchEngine("kagi")
+                item.isChecked = true
+                true
+            }
+            R.id.menuSettings -> {
+                // Placeholder for future settings
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun setSearchEngine(engine: String) {
+        searchEngine = engine
+        prefs.edit().putString(KEY_SEARCH_ENGINE, engine).apply()
     }
 
     override fun onBackPressed() {
