@@ -105,8 +105,8 @@ class AiAssistantActivity : AppCompatActivity() {
         }
     }
 
-    private fun processWithTools(messages: List<ChatMessage>) {
-        var currentMessages = messages.toMutableList()
+    private fun processWithTools(initialMessages: List<ChatMessage>) {
+        var currentMessages = initialMessages.toMutableList()
         var toolCalls: List<ToolCall>? = null
 
         while (true) {
@@ -117,7 +117,9 @@ class AiAssistantActivity : AppCompatActivity() {
 
             val response = callAiApi(currentMessages)
             handler.post {
-                messages.removeLast()
+                if (messages.isNotEmpty()) {
+                    messages.removeAt(messages.size - 1)
+                }
                 chatAdapter.notifyDataSetChanged()
             }
 
@@ -185,7 +187,7 @@ class AiAssistantActivity : AppCompatActivity() {
             conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
             conn.connectTimeout = 15000
             conn.readTimeout = 15000
-            conn.followRedirects = true
+            conn.instanceFollowRedirects = true
 
             val responseCode = conn.responseCode
             if (responseCode == 200) {
