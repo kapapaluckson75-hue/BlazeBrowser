@@ -27,27 +27,27 @@
         </activity>
         <activity
             android:name=".TempMailActivity"
-            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar" />
         <activity
             android:name=".InboxActivity"
-            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
-            android:parentActivityName=".TempMailActivity" />
+            android:parentActivityName=".TempMailActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar" />
         <activity
             android:name=".MessageDetailActivity"
-            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
-            android:parentActivityName=".InboxActivity" />
+            android:parentActivityName=".InboxActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar" />
         <activity
             android:name=".AiAssistantActivity"
-            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar" />
         <activity
             android:name=".AiConfigActivity"
-            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar" />
         <activity
             android:name=".BlazeLinkActivity"
-            android:theme="@style/Theme.BlazeBrowser.NoActionBar"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.BlazeBrowser.NoActionBar" />
     </application>
 </manifest>

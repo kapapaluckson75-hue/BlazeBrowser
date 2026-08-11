@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blazebrowser.bridge.BlazeLinkManager
-import com.google.android.material.materialswitch.MaterialSwitch
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 class BlazeLinkActivity : AppCompatActivity() {
 
@@ -62,7 +62,7 @@ class BlazeLinkActivity : AppCompatActivity() {
         inner class VH(view: View) : RecyclerView.ViewHolder(view) {
             val name: TextView = view.findViewById(R.id.textSiteName)
             val domain: TextView = view.findViewById(R.id.textSiteDomain)
-            val toggle: MaterialSwitch = view.findViewById(R.id.switchEnable)
+            val toggle: SwitchMaterial = view.findViewById(R.id.switchEnable)
         }
 
         override fun onCreateViewHolder(parent: android.view.ViewGroup, viewType: Int): VH {
