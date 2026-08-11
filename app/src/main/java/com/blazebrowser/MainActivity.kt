@@ -500,9 +500,10 @@ class MainActivity : AppCompatActivity() {
             .setTitle("Find in Page")
             .setView(layout)
             .setPositiveButton("Find") { _, _ ->
-                findInPageQuery = input.text.toString()
-                if (!findInPageQuery.isNullOrEmpty()) {
-                    currentWebView()?.findAllAsync(findInPageQuery)
+                val query = input.text.toString()
+                findInPageQuery = query
+                if (query.isNotEmpty()) {
+                    currentWebView()?.findAllAsync(query)
                 }
             }
             .setNegativeButton("Close") { _, _ ->
